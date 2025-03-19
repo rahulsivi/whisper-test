@@ -8,7 +8,7 @@ import os
 import nvidia.cublas.lib
 import nvidia.cudnn.lib
 
-print(os.path.dirname(nvidia.cublas.lib.__file__) + ":" + os.path.dirname(nvidia.cudnn.lib.__file__))
+os.environ["LD_LIBRARY_PATH"] = "/usr/local/cuda-12.4/lib:"+os.environ.get("LD_LIBRARY_PATH", "")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("whisper-api")
