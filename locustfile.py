@@ -19,7 +19,7 @@ class InferenceTaskSet(HttpUser):
     @task
     def post_audio_files(self):
         # Fetch only .mp3 files from the folder
-        audio_files = [f for f in os.listdir(AUDIO_FOLDER) if f.endswith(".mp3")]
+        audio_files = [f for f in os.listdir(AUDIO_FOLDER) if f.endswith(".wav")]
 
         if not audio_files:
             logging.error("No MP3 audio files found in the folder: %s", AUDIO_FOLDER)
@@ -29,11 +29,11 @@ class InferenceTaskSet(HttpUser):
             file_path = os.path.join(AUDIO_FOLDER, file_name)
             try:
                 with open(file_path, "rb") as audio:
-                    files = {"file": (file_name, audio, "audio/mpeg")}
+                    files = {"file": (file_name, audio, "audio/wav")}
                     logging.info(f"Sending request with file: {file_name}")
 
                     start = time()
-                    response = self.client.post("/transcribe/", files=files)
+                    response = self.client.post("/inference", files=files)
                     elapsed_time = time() - start
 
                     if response.status_code == 200:
