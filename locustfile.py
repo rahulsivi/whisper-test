@@ -13,7 +13,7 @@ logging.basicConfig(
 AUDIO_FOLDER = "/Users/rahul/Desktop/Audio"
 
 class InferenceTaskSet(HttpUser):
-    host = "http://ec2-13-234-66-210.ap-south-1.compute.amazonaws.com:8000"  
+    host = "http://ec2-3-109-158-143.ap-south-1.compute.amazonaws.com"  
     wait_time = between(1, 2)  
 
     @task

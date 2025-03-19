@@ -22,7 +22,7 @@ hqq_config = HqqConfig(
 ) 
 
 pipeline = SpeechToTextPipeline(
-    model_id="openai/whisper-medium",
+    model_id="openai/whisper-large-v3-turbo",
     quant_config=hqq_config,
     flash_attention_2=True,
 )
