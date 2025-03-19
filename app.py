@@ -46,13 +46,14 @@ async def transcribe(file: UploadFile = File(...)):
         start = time.time()
         transcript = pipeline(
             audio_path=temp_file_path,
-            chunk_length_s=50,
-            stride_length_s=1,
-            max_new_tokens=200,
-            batch_size=200,
+            chunk_length_s=30,  # Smaller chunks for faster processing
+            stride_length_s=2,  # Higher stride to reduce redundant computation
+            max_new_tokens=100,  # Lower max tokens to speed up decoding
+            batch_size=64,  # Reduce batch size for better efficiency
             language="english",
             return_timestamps=True,
         )
+
         end = time.time()
         duration = end - start
 
