@@ -4,6 +4,11 @@ import time
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from faster_whisper import WhisperModel
 import tempfile
+import os
+import nvidia.cublas.lib
+import nvidia.cudnn.lib
+
+print(os.path.dirname(nvidia.cublas.lib.__file__) + ":" + os.path.dirname(nvidia.cudnn.lib.__file__))
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("whisper-api")
