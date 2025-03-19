@@ -22,10 +22,11 @@ hqq_config = HqqConfig(
 ) 
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=torch.bfloat16,
-    bnb_4bit_use_double_quant=True,
+    bnb_4bit_quant_type="fp4",  # Faster than nf4
+    bnb_4bit_compute_dtype=torch.float16,  # Faster than bfloat16 on some GPUs
+    bnb_4bit_use_double_quant=False,  # Disabling for speed
 )
+
 
 pipeline = SpeechToTextPipeline(
     model_id="openai/whisper-small",
