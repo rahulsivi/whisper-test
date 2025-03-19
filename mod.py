@@ -19,7 +19,7 @@ app = FastAPI()
 model = WhisperModel(
     "medium",
     device="cuda",
-    compute_type="float16",  # Use float16 for T4 tensor cores
+    compute_type="int8_float16",  # Use float16 for T4 tensor cores
     download_root="./models" # Cache models locally
 )
 
