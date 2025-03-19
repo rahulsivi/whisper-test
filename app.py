@@ -28,7 +28,7 @@ bnb_config = BitsAndBytesConfig(
 )
 
 pipeline = SpeechToTextPipeline(
-    model_id="openai/whisper-medium",
+    model_id="openai/whisper-small",
     quant_config=bnb_config,
     flash_attention_2=True,
 )
