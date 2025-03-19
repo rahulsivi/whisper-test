@@ -20,10 +20,16 @@ hqq_config = HqqConfig(
     axis=0,
     offload_meta=False,
 ) 
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=torch.bfloat16,
+    bnb_4bit_use_double_quant=True,
+)
 
 pipeline = SpeechToTextPipeline(
-    model_id="openai/whisper-large-v3-turbo",
-    quant_config=hqq_config,
+    model_id="openai/whisper-medium",
+    quant_config=bnb_config,
     flash_attention_2=True,
 )
 # pipeline.model.generation_config.task = "transcribe"
