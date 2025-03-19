@@ -20,8 +20,6 @@ model = WhisperModel(
     "medium",
     device="cuda",
     compute_type="float16",  # Use float16 for T4 tensor cores
-    cpu_threads=1,           # Reduce CPU overhead
-    num_workers=1,           # Simplify pipeline for lower latency
     download_root="./models" # Cache models locally
 )
 
