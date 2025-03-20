@@ -13,7 +13,7 @@ logging.basicConfig(
 AUDIO_FOLDER = "/Users/rahul/Desktop/Audio"
 
 class InferenceTaskSet(HttpUser):
-    host = "http://ec2-3-109-158-143.ap-south-1.compute.amazonaws.com"  
+    host = "http://20.244.39.172:8000/"  
     wait_time = between(1, 2)  
 
     @task
@@ -33,7 +33,7 @@ class InferenceTaskSet(HttpUser):
                     logging.info(f"Sending request with file: {file_name}")
 
                     start = time()
-                    response = self.client.post("/inference", files=files)
+                    response = self.client.post("inference", files=files)
                     elapsed_time = time() - start
 
                     if response.status_code == 200:

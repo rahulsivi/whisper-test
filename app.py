@@ -29,12 +29,12 @@ bnb_config = BitsAndBytesConfig(
 
 
 pipeline = SpeechToTextPipeline(
-    model_id="openai/whisper-medium",
+    model_id="Systran/faster-whisper-medium",
     quant_config=bnb_config,
     flash_attention_2=True,
 )
-# pipeline.model.generation_config.task = "transcribe"
-# pipeline.model.generation_config.forced_decoder_ids = None
+pipeline.model.generation_config.task = "transcribe"
+pipeline.model.generation_config.forced_decoder_ids = None
 
 @app.post("/transcribe/")
 async def transcribe(file: UploadFile = File(...)):
